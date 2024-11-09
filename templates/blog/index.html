@@ -1,0 +1,283 @@
+{% extends './base.html' %} <br />
+{%block content%}
+
+<!-- Page header with logo and tagline-->
+<header class="py-5 border-bottom mb-4" id="header">
+  <div class="container">
+    <div class="text-center my-5">
+      <h1 class="fw-bolder" style="color: chartreuse">
+        Imara Building Materials
+      </h1>
+      <p class="fw-bolder lead mb-0" style="color: chartreuse">
+        Ubora na Uaminifu ni Jadi Yetu
+      </p>
+      <h1 class="fw-bolder" style="color: black">
+        Mawasiliano:0762106566 au 0688464036
+      </h1>
+    </div>
+  </div>
+
+  {%if messages%}<br />
+  {%for msg in messages%}<br />
+  {%if 'oda' in msg.tags%}<br />
+
+  <div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    id="message"
+  >
+    <strong>{{msg}}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  {%endif%}<br />
+  {%endfor%}<br />
+  {%endif%}<br />
+</header>
+<script>
+  setTimeout(function () {
+    messageID = document.getElementById("message");
+    if (messageID) {
+      messageID.style.display = "none";
+    }
+  }, 7000);
+</script>
+
+<div class="text-center my-5">
+  <h1 class="fw-bolder text-dark allign-items-center">HUDUMA ZETU</h1>
+</div>
+<!-- Page content-->
+<div class="container">
+  <div class="row">
+    <!-- Blog entries-->
+    <div class="col">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"
+          ><img class="card-img-top" src="/static/img/bati.jpg" alt="..."
+        /></a>
+        <div class="card-body">
+          {% comment %}
+          <div class="small text-muted">January 1, 2023</div>
+          {% endcomment %}
+          <h2 class="card-title">Mabati</h2>
+          <p class="card-text">
+            Tunauza na kusambaza mabati ya aina mbali mbali popote ulipo
+            Tanzania.
+          </p>
+          <a class="btn btn-primary" href="{%url 'mabati'%}"
+            >Aina mbalimbali za bati</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"
+          ><img class="card-img-top" src="/static/img/kigae.jpg" alt="..."
+        /></a>
+        <div class="card-body">
+          {% comment %}
+          <div class="small text-muted">January 1, 2023</div>
+          {% endcomment %}
+          <h2 class="card-title">Vigae</h2>
+          <p class="card-text">
+            <strong>Bei ya kigae ni 17,500 tsh</strong>
+          </p>
+          <a class="btn btn-primary" href="{%url 'place_order' 'vigae'%}"
+            >Weka Oda ya Vigae</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Blog entries-->
+    <div class="col">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"
+          ><img class="card-img-top" src="/static/img/misumari.jpg" alt="..."
+        /></a>
+        <div class="card-body">
+          {% comment %}
+          <div class="small text-muted">January 1, 2023</div>
+          {% endcomment %}
+          <h2 class="card-title">Misumari</h2>
+          <p class="card-text">
+            <strong>Misumari kilo 1 ni 8000 tsh</strong>
+          </p>
+          <a class="btn btn-primary" href="{%url 'place_order' 'misumari'%}"
+            >Weka Oda ya misumari</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"
+          ><img class="card-img-top" src="/static/img/kofia.jpg" alt="..."
+        /></a>
+        <div class="card-body">
+          {% comment %}
+          <div class="small text-muted">January 1, 2023</div>
+          {% endcomment %}
+          <h2 class="card-title">Kofia</h2>
+          <p class="card-text">
+            <strong>Kofia mita 3 ni 12,000 tsh</strong>
+          </p>
+          <a class="btn btn-primary" href="{%url 'place_order' 'kofia'%}"
+            >Weka Oda ya kofia za Bati</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Blog entries-->
+    <div class="col">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"
+          ><img class="card-img-top" src="/static/img/crimpping.jpg" alt="..."
+        /></a>
+        <div class="card-body">
+          {% comment %}
+          <div class="small text-muted">January 1, 2023</div>
+          {% endcomment %}
+          <h2 class="card-title">Crimping</h2>
+          <p class="card-text">
+            <strong>Mita 1 ni 10,000 tsh</strong>
+          </p>
+          <a class="btn btn-primary" href="{%url 'place_order' 'crimping'%}"
+            >Weka Oda ya Crimping</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <!-- Featured blog post-->
+      <div class="card mb-4">
+        <a href="#!"
+          ><img class="card-img-top" src="/static/img/ushauri.jpg" alt="..."
+        /></a>
+        <div class="card-body">
+          <h2 class="card-title">Ushauri wa kitaalam</h2>
+          <p class="card-text">
+            Imara Building Materials pia tutakushauri ukiwa kama mteja wetu ili
+            kuhakikisha unafanikisha malengo yako kwenye ujenzi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ofa Zetu -->
+
+  <div
+    class="container d-flex myCard my-5"
+    data-aos="fade-up"
+    data-aos-delay="100"
+    data-aos-duration="1500"
+  >
+    <div>
+      <h1 class="display-3" id="ofazetu">
+        Ukinunua bati 80 utapata ofa zifuatazo
+      </h1>
+      <h5 class="fw-bold">
+        <i class="bi bi-1-circle-fill"></i>
+
+        Usafiri bure mpaka mahali popote ulipo Tanzania
+      </h5>
+      <h5 class="fw-bold">
+        <i class="bi bi-2-circle-fill"></i> Misumari kilo 10 bure
+      </h5>
+      <h5 class="fw-bold">
+        <i class="bi bi-3-circle-fill"></i> Ushauri wa kitaalamu bure
+      </h5>
+      <h5 class="fw-bold">
+        <i class="bi bi-4-circle-fill"></i> Kofia za bati bure
+      </h5>
+      <h5 class="fw-bold">
+        <i class="bi bi-5-circle-fill"></i> Warranty ya miaka 10
+      </h5>
+      <h5 class="fw-bold">NB: Ofa hizi ni kwa mwezi huu tuu.</h5>
+    </div>
+  </div>
+
+  <!-- Mawasiliano -->
+  <div
+    class="container d-flex myCard my-5"
+    data-aos="fade-up"
+    data-aos-delay="100"
+    data-aos-duration="1500"
+  >
+    <div>
+      <h1 class="display-3" id="Mawasiliano">Mawasiliano</h1>
+      <h5 class="fw-bold">
+        <i class="bi bi-telephone-fill"></i>0762106566 au 0688464036
+      </h5>
+      <h5>
+        <a
+          href="mailto:imarabati@gmail.com"
+          class="ps-1 text-primary fw-bold text-decoration-none"
+        >
+          <i class="bi bi-envelope"></i>imarabati@gmail.com
+        </a>
+      </h5>
+      <h5 class="fw-bold">
+        <img
+          src="/static/img/WhatsApp.png"
+          width="30px"
+          height="30px"
+        />0762106566 au 0688464036
+      </h5>
+      <h5>
+        <a
+          href="https://www.facebook.com/mabatimara?mibextid=ZbWKwL"
+          target="_blank"
+          class="text-primary fw-bold text-decoration-none"
+          ><img
+            src="/static/img/facebook.png"
+            width="30px"
+            height="30px"
+          />Imara bati</a
+        >
+      </h5>
+      <h5>
+        <a
+          href="https://www.instagram.com/mabati_imara_ya_kisasa_tz"
+          target="_blank"
+          class="text-primary fw-bold text-decoration-none"
+          ><img
+            src="/static/img/instagram.jpeg"
+            width="30px"
+            height="30px"
+          />@mabati_imara_ya_kisasa_tz</a
+        >
+      </h5>
+    </div>
+  </div>
+
+  <!-- Mahali Tulipo -->
+
+  <div
+    class="container d-flex myCard my-5"
+    data-aos="fade-up"
+    data-aos-delay="100"
+    data-aos-duration="1500"
+  >
+    <div id="MahaliTulipo">
+      <h1 class="display-3">Mahali Tulipo</h1>
+      <h3 class="fw-bold">Tunapatikana Dar-es-salaam,Tabata Matumbi</h3>
+    </div>
+  </div>
+</div>
+
+{%endblock content%}
