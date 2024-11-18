@@ -1,0 +1,44 @@
+{% extends './base.html' %} <br />
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Aina Ya Bidhaa</th>
+      <th scope="col">Kiasi</th>
+      <th scope="col">Mkoa Bidhaa Inapopelekwa</th>
+      <th scope="col">Tarehe Oda ilipowekwa</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {%for order in orders%}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{order.product}}</td>
+      <td>{{order.quantity}}</td>
+      <td>{{order.region}}</td>
+      <td>{{order.order_date}}</td>
+      <td>
+        {% if order.can_cancel %}
+        <a
+          href="{% url 'cancel_order' order.id %}"
+          class="btn btn-sm bg-danger text-light"
+        >
+          Cancel
+        </a>
+        {% endif %}
+      </td>
+
+      {% comment %}
+
+      <td>
+        <a href="{% url 'deleteWritten_records' record.id %}">Delete</a>
+      </td>
+      {% endcomment %}
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{%endblock content%}

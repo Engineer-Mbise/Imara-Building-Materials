@@ -5,7 +5,7 @@ from .models import Category,Product,Order
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display=["customer_name","customer_phone_number","order_date","product","status","region","quantity"]
+    list_display=["customer","order_date","product","status","region","quantity"]
 
 
 class CategoryAdmin(admin.ModelAdmin):

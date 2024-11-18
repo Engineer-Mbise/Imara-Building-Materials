@@ -9,11 +9,10 @@ class OrderForm(ModelForm):
         model = Order
         phone_number = PhoneNumberField()
         exclude=["product","status"]
-        fields =["quantity","customer_name","customer_phone_number","region"]
+        fields =["quantity","region"]
         widgets={
             "quantity": forms.TextInput(attrs={"class":"form-control"}),
-            "customer_name": forms.TextInput(attrs={"placeholder":"John Doe","class":"form-control"}),
-            "customer_phone_number":forms.TextInput(attrs={"placeholder":"0754xxxxxx","class":"form-control"}),
+           
             "region": forms.TextInput(attrs={"placeholder":"Arusha","class":"form-control"})
            
         }

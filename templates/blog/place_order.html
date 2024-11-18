@@ -5,14 +5,7 @@
 >
   <form method="POST">
     {% csrf_token%}
-    <div>
-      <label for="{{customer_name.id_for_label}}">Jina</label
-      ><br />{{customer_name}}<br />
-    </div>
-    <div>
-      <label for="{{customer_phone_number.id_for_label}}">Namba Ya Simu</label
-      ><br />{{customer_phone_number}}<br />
-    </div>
+
     <div>
       <label for="{{region.id_for_label}}">Mkoa</label><br />{{region}}<br />
     </div>
@@ -46,7 +39,7 @@
     </div>
     {%endif%}
     <input
-      class="btn bg-primary text-light"
+      class="btn bg-secondary text-light"
       type="submit"
       value="Submit"
     /><br /><br />
