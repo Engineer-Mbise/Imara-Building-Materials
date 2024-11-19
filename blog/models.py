@@ -26,11 +26,15 @@ class Product(models.Model):
     
     
 class Order(models.Model):
+      class OrderStatus(models.TextChoices):
+        PENDING = 'Inasubiri kuthibitishwa', 'Inasubiri kuthibitishwa'
+        APPROVED = 'Imekamilika', 'Imekamilika'
+        REJECTED = 'Imekataliwa', 'Imekataliwa'
       customer = models.ForeignKey(User,on_delete=models.CASCADE)
       quantity = models.CharField(max_length=250)
       region=models.CharField(max_length=250)
       product = models.CharField(max_length=250)
-      status = models.BooleanField(default=False)
+      status = models.CharField(max_length=200, choices=OrderStatus.choices, default=OrderStatus.PENDING)
       order_date = models.DateTimeField(auto_now_add=True)
       def __str__(self):
         return f"Order number {self.id} by {self.customer.first_name}"

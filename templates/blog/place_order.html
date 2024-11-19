@@ -7,7 +7,8 @@
     {% csrf_token%}
 
     <div>
-      <label for="{{region.id_for_label}}">Mkoa</label><br />{{region}}<br />
+      <label for="{{region.id_for_label}}">Mkoa bidhaa inapopelekwa</label
+      ><br />{{region}}<br />
     </div>
     {%if name == 'misumari'%}
     <div>
@@ -39,9 +40,9 @@
     </div>
     {%endif%}
     <input
-      class="btn bg-secondary text-light"
+      class="btn bg-primary text-light"
       type="submit"
-      value="Submit"
+      value="Tuma"
     /><br /><br />
   </form>
 </div>

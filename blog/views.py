@@ -68,3 +68,13 @@ def cancel_order(request,pk):
     order_to_be_canceled=Order.objects.filter(id=pk)
     order_to_be_canceled.delete()
     return redirect('my_orders')
+
+
+
+
+def update_order_status(request, order_id):
+    if request.method == 'POST':
+        order = Order.objects.get(pk=order_id)
+        order.status = request.POST['status']
+        order.save()
+        return redirect('my_orders') 

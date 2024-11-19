@@ -1,44 +1,62 @@
-{% extends './base.html' %} <br />
+{% extends './base.html' %}
 {% block content %}
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
+      {% if request.user.role == 'OWNER' or request.user.role == 'ADMIN' %}
+        <th scope="col">Jina La Mteja</th>
+        <th scope="col">Namba Za Simu</th>
+      {% endif %}
       <th scope="col">Aina Ya Bidhaa</th>
       <th scope="col">Kiasi</th>
       <th scope="col">Mkoa Bidhaa Inapopelekwa</th>
       <th scope="col">Tarehe Oda ilipowekwa</th>
-      <th scope="col">ACTION</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 
   <tbody>
-    {%for order in orders%}
-    <tr>
-      <th scope="row">{{forloop.counter}}</th>
-      <td>{{order.product}}</td>
-      <td>{{order.quantity}}</td>
-      <td>{{order.region}}</td>
-      <td>{{order.order_date}}</td>
-      <td>
-        {% if order.can_cancel %}
-        <a
-          href="{% url 'cancel_order' order.id %}"
-          class="btn btn-sm bg-danger text-light"
-        >
-          Cancel
-        </a>
-        {% endif %}
-      </td>
-
-      {% comment %}
-
-      <td>
-        <a href="{% url 'deleteWritten_records' record.id %}">Delete</a>
-      </td>
-      {% endcomment %}
-    </tr>
-    {%endfor%}
+    {% if orders %}
+      {% for order in orders %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          {% if request.user.role == 'OWNER' or request.user.role == 'ADMIN' %}
+            <td>{{ order.customer.first_name }}</td>
+            <td>{{ order.customer.phone_number }}</td>
+          {% endif %}
+          <td>{{ order.product }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.region }}</td>
+          <td>{{ order.order_date }}</td>
+          <td>
+            {% if request.user.role == 'OWNER' or request.user.role == 'ADMIN' %}
+              <form method="post" action="{% url 'update_order_status' order.id %}">
+                {% csrf_token %}
+                <select name="status">
+                  {% for choice in order.OrderStatus.choices %}
+                    <option value="{{ choice.0 }}" {% if choice.0 == order.status %}selected{% endif %}>{{ choice.1 }}</option>
+                  {% endfor %}
+                </select>
+                <input type="submit" value="Update" class="btn btn-sm btn-primary">
+              </form>
+            {% else %}
+              {{ order.status }}
+            {% endif %}
+          </td>
+          <td>
+            {% if order.can_cancel %}
+              <a href="{% url 'cancel_order' order.id %}" class="btn btn-sm bg-danger text-light">Cancel</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="8" class="text-center">Haujaweka Oda yoyote mpaka sasa!!</td>
+      </tr>
+    {% endif %}
   </tbody>
 </table>
-{%endblock content%}
+{% endblock content %}

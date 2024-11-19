@@ -33,9 +33,12 @@
     <div
       class="registration d-flex flex-column align-items-center"
     >
-      <h1 class="fw-bold text-primary">Create an Account</h1>
+   
 
-      <p>Enter your personal details to create account</p>
+
+      <h1 class="fw-bold text-primary"> Fungua Akaunti</h1>
+
+      <p>Ingiza taarifa zako binafsi kufungua akaunti</p>
 
       <form action="" method="POST">
         {%csrf_token%}
@@ -55,12 +58,12 @@
         </div><br>
       
         <div>
-          <label for="email">Email</label><br>
+          <label for="email">Email&nbsp;(Barua Pepe)</label><br>
         {{email}}
         </div><br>
      
         <div>
-          <label for="password">Password</label><br>
+          <label for="password">Password&nbsp;(Nenosiri)</label><br>
        {{password}}
         </div><br>
       
@@ -71,11 +74,11 @@
  
         
 
-        <input type="submit" value="Submit" class="btn btn-secondary" />
+        <input type="submit" value="Tuma" class="btn btn-primary" />
         <div><br>
           <p>
-        Already have an account?
-          <a href="{% url 'login'%}" style="text-decoration:none;">Log in</a>
+            Tayari una akaunti?
+          <a href="{% url 'login'%}" style="text-decoration:none;">Ingia</a>
          </p>
          </div>
       </div>

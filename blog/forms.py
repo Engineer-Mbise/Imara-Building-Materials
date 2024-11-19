@@ -8,7 +8,7 @@ class OrderForm(ModelForm):
     class Meta:
         model = Order
         phone_number = PhoneNumberField()
-        exclude=["product","status"]
+        exclude=["product"]
         fields =["quantity","region"]
         widgets={
             "quantity": forms.TextInput(attrs={"class":"form-control"}),
