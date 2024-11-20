@@ -53,9 +53,14 @@
         </tr>
       {% endfor %}
     {% else %}
-      <tr>
-        <td colspan="8" class="text-center">Haujaweka Oda yoyote mpaka sasa!!</td>
-      </tr>
+    <tr>
+      {% if request.user.role == 'OWNER' or request.user.role == 'ADMIN' %}
+          <td colspan="8" class="text-center">Hakuna oda iliyowekwa mpaka sasa!!</td>
+      {% else %}
+          <td colspan="8" class="text-center">Haujaweka oda yoyote mpaka sasa!!</td>
+      {% endif %}
+  </tr>
+  
     {% endif %}
   </tbody>
 </table>

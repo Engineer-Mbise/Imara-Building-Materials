@@ -19,11 +19,19 @@ import sys
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+import environ
+
+env=environ.Env()
+
+environ.Env.read_env()
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-__a+i5-d$0!h93i4@ix(1kt3jb#u#1kz*21zqafe&qor7vbuuu'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,11 +90,19 @@ WSGI_APPLICATION = 'imara_building_materials.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+import dj_database_url
+
+DATABASES ={
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+  
 }
 
 
@@ -137,5 +153,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-PHONENUMBER_DEFAULT_REGION='TZ'
-PHONENUMBER_DB_FORMAT='INTERNATIONAL'
+PHONENUMBER_DEFAULT_REGION=env('PHONENUMBER_DEFAULT_REGION')
+PHONENUMBER_DB_FORMAT=env('PHONENUMBER_DB_FORMAT')
+

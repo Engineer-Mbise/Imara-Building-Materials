@@ -1,0 +1,37 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+env/
+venv/
+.DS_Store
+
+# Django-specific files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+# /media
+# /staticfiles
+# /static/
+.env
+
+# VS Code
+.vscode/
+
+# Pipenv
+Pipfile
+Pipfile.lock
+
+# Test coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+
+# macOS
+.DS_Store

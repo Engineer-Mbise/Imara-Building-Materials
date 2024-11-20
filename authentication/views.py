@@ -19,9 +19,10 @@ def registration(request):
         form=RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.role='Customer'
             user.password = make_password(form.cleaned_data["password"])
             form.save()
-            return redirect("index")     
+            return redirect("login")     
     else:
         form=RegistrationForm()       
     return render(request,"authentication/registration.html",{
