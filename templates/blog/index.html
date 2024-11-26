@@ -18,6 +18,20 @@
     </div>
   </div>
 
+</header>
+<script>
+  setTimeout(function () {
+    messageID = document.getElementById("message");
+    if (messageID) {
+      messageID.style.display = "none";
+    }
+  }, 8000);
+</script>
+
+<div class="text-center">
+  <h1 class="fw-bolder text-dark allign-items-center">HUDUMA ZETU</h1>
+</div>
+<div>
   {%if messages%}<br />
   {%for msg in messages%}<br />
   {%if 'oda' in msg.tags%}<br />
@@ -39,18 +53,6 @@
   {%endif%}<br />
   {%endfor%}<br />
   {%endif%}<br />
-</header>
-<script>
-  setTimeout(function () {
-    messageID = document.getElementById("message");
-    if (messageID) {
-      messageID.style.display = "none";
-    }
-  }, 7000);
-</script>
-
-<div class="text-center my-5">
-  <h1 class="fw-bolder text-dark allign-items-center">HUDUMA ZETU</h1>
 </div>
 <!-- Page content-->
 <div class="container">

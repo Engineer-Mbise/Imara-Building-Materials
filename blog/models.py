@@ -40,4 +40,4 @@ class Order(models.Model):
         return f"Order number {self.id} by {self.customer.first_name}"
     
       def can_cancel(self):
-        return now() < self.order_date + timedelta(minutes=2000)
+        return now() < self.order_date + timedelta(hours=24)

@@ -1,5 +1,38 @@
 {% extends './base.html' %}
+
 {% block content %}
+<script>
+  setTimeout(function () {
+    messageID = document.getElementById("message");
+    if (messageID) {
+      messageID.style.display = "none";
+    }
+  }, 100000);
+</script>
+
+<div>
+  {%if messages%}<br />
+  {%for msg in messages%}<br />
+  {%if 'oda_limit' in msg.tags%}<br />
+
+  <div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    id="message"
+  >
+    <strong>{{msg}}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  {%endif%}<br />
+  {%endfor%}<br />
+  {%endif%}<br />
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -46,7 +79,8 @@
             {% endif %}
           </td>
           <td>
-            {% if order.can_cancel %}
+            {% if order.can_cancel or request.user.role == 'OWNER' or request.user.role == 'ADMIN' %}
+            
               <a href="{% url 'cancel_order' order.id %}" class="btn btn-sm bg-danger text-light">Cancel</a>
             {% endif %}
           </td>
@@ -64,4 +98,5 @@
     {% endif %}
   </tbody>
 </table>
+
 {% endblock content %}

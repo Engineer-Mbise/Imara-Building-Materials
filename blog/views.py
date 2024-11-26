@@ -58,6 +58,7 @@ def my_orders(request):
      else:
          
           orders=Order.objects.filter(customer=request.user)
+          messages.info(request,"Baada ya masaa 24 kupita hautoweza kuondoa oda uliyoweka",extra_tags='oda_limit')
      return render(request,"blog/my_orders.html",{"orders":orders})
     
 def wasifu(request):
