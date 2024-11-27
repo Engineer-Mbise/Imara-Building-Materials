@@ -27,7 +27,7 @@
           <p class="card-text">{{ product.description }}</p>
           <p class="card-text"><strong>Bei:</strong></p>
           <strong><p>{{ product.price }}</p></strong>
-          <a class="btn btn-primary" href="{%url 'place_order' 'mabati'%}"
+          <a class="btn btn-primary" href="{%url 'place_order' product.name%}"
             >Weka Oda Yako</a
           >
         </div>
