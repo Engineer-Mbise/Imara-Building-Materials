@@ -10942,3 +10942,32 @@ textarea.form-control-lg {
 
 
 
+
+
+header, footer {
+  background-color: #f0f0f0; /* Optional: a visible background color */
+  width: max-content; /* Automatically adapts to the width of content */
+  margin: 0 auto; /* Centers the header and footer horizontally */
+  padding: 10px; /* Optional: adds spacing inside the header/footer */
+  text-align: center; /* Optional: centers text content */
+}
+
+.container {
+  width: fit-content; /* Ensures the container width matches the content */
+  margin: 0 auto; /* Centers the container horizontally */
+}
+
+.table {
+  margin: 0 auto; /* Centers the table */
+}
+
+
+
+
+
+
+
+
+
+
+
