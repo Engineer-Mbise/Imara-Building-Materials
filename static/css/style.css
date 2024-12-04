@@ -10943,9 +10943,24 @@ textarea.form-control-lg {
 
 
 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 header, footer {
+  background-color: #f0f0f0;
+  padding: 10px;
   position: fixed;
   width: 100%;
+  left: 0;
+  right: 0;
 }
 
 header {
@@ -10955,6 +10970,18 @@ header {
 footer {
   bottom: 0;
 }
+
+main {
+  margin-top: 60px; /* Adjust based on header height */
+  margin-bottom: 60px; /* Adjust based on footer height */
+  overflow-y: auto;
+  height: calc(100% - 120px); /* Adjust based on header and footer heights */
+}
+
+.content {
+  padding: 20px;
+}
+
 
 
 
