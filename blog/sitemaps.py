@@ -15,20 +15,6 @@ class StaticSitemap(Sitemap):
         return reverse(item)
 
 
-
-
-# Category Sitemap
-class CategorySitemap(Sitemap):
-    changefreq = "weekly"  # Adjust based on update frequency of categories
-    priority = 0.9
-
-    def items(self):
-        return Category.objects.all()
-
-
-
-
-
 # Product Sitemap
 class ProductSitemap(Sitemap):
     changefreq = "daily"

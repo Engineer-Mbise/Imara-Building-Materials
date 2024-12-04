@@ -1,5 +1,6 @@
 from django.db import models
 from authentication.models import User
+from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import FileExtensionValidator
 from datetime import timedelta
@@ -30,6 +31,11 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
+      
+      
+    def get_absolute_url(self):
+      
+        return reverse('mabati') 
     
     
 class Order(models.Model):
@@ -53,3 +59,7 @@ class Order(models.Model):
     
       def can_cancel(self):
         return now() < self.order_date + timedelta(hours=24)
+      
+      def get_absolute_url(self):
+        # Assuming you have a URL like "place_order/<str:name>"
+         return reverse('place_order', args=[self.product])
