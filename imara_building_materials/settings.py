@@ -46,6 +46,7 @@ AUTH_USER_MODEL = "authentication.User"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.sitemaps',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

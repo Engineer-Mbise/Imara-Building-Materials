@@ -10943,7 +10943,18 @@ textarea.form-control-lg {
 
 
 
+header, footer {
+  position: fixed;
+  width: 100%;
+}
 
+header {
+  top: 0;
+}
+
+footer {
+  bottom: 0;
+}
 
 
 
