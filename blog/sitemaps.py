@@ -25,8 +25,6 @@ class CategorySitemap(Sitemap):
     def items(self):
         return Category.objects.all()
 
-    def lastmod(self, obj):
-        return obj.updated_at if hasattr(obj, 'updated_at') else None  # Requires an updated_at field
 
 
 
@@ -39,8 +37,7 @@ class ProductSitemap(Sitemap):
     def items(self):
         return Product.objects.all()
 
-    def lastmod(self, obj):
-        return obj.updated_at if hasattr(obj, 'updated_at') else None  # Requires an updated_at field
+  
 
 
 
