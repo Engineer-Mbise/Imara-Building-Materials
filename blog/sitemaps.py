@@ -49,6 +49,3 @@ class OrderSitemap(Sitemap):
 
     def items(self):
         return Order.objects.filter(status=Order.OrderStatus.APPROVED)
-
-    def lastmod(self, obj):
-        return obj.order_date
