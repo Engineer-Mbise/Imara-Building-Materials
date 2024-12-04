@@ -3,6 +3,8 @@ from .models import Product,Order
 from .forms import OrderForm
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
 
 
 # Create your views here.
@@ -79,3 +81,15 @@ def update_order_status(request, order_id):
         order.status = request.POST['status']
         order.save()
         return redirect('my_orders') 
+    
+    
+    
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /private/",
+        "Allow: /static/",
+        f"Sitemap: https://{request.get_host()}/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")

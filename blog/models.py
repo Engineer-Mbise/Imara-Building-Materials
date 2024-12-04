@@ -10,6 +10,10 @@ imageExt_validator=FileExtensionValidator(["JPG","PNG","GIF","TIFF","BMP","WEBP"
 class Category(models.Model):
     name=models.CharField(max_length=250)
     description=models.TextField(blank=True,null=True)
+    
+    class Meta:
+      ordering = ['id']  
+      
     def __str__(self):
         return self.name
     
@@ -20,6 +24,9 @@ class Product(models.Model):
     price=models.TextField()
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     image=models.ImageField(upload_to='images/',validators=[imageExt_validator])
+    
+    class Meta:
+      ordering = ['id']  
     
     def __str__(self):
         return self.name
@@ -36,6 +43,11 @@ class Order(models.Model):
       product = models.CharField(max_length=250)
       status = models.CharField(max_length=200, choices=OrderStatus.choices, default=OrderStatus.PENDING)
       order_date = models.DateTimeField(auto_now_add=True)
+      
+      class Meta:
+        ordering = ['id']  
+        
+        
       def __str__(self):
         return f"Order number {self.id} by {self.customer.first_name}"
     
