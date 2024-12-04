@@ -10954,7 +10954,7 @@ html, body {
   height: 100%;
 }
 
-header, footer {
+nav, footer {
   background-color: #f0f0f0;
   padding: 10px;
   position: fixed;
@@ -10963,7 +10963,7 @@ header, footer {
   right: 0;
 }
 
-header {
+nav {
   top: 0;
 }
 
