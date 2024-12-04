@@ -2,9 +2,21 @@ from django.urls import path
 
 from . import views
 from django.contrib.auth import views as auth_views
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticSitemap, CategorySitemap, ProductSitemap, OrderSitemap
+
+
+sitemaps = {
+    'static': StaticSitemap,
+    'categories': CategorySitemap,
+    'products': ProductSitemap,
+    # Include 'orders' only if they're public-facing
+    # 'orders': OrderSitemap,
+}
 
 
 urlpatterns = [
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path("", views.index, name="index"),
     path("mabati/", views.mabati, name="mabati"),
     path("place_order/<str:name>/", views.place_order, name="place_order"),
