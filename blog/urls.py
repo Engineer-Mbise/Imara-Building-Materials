@@ -17,7 +17,7 @@ sitemaps = {
 
 urlpatterns = [
     path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
-    path("robots.txt", views.robots_txt, name="robots_txt"),
+    path("robots.txt/", views.robots_txt, name="robots_txt"),
     path("", views.index, name="index"),
     path("mabati/", views.mabati, name="mabati"),
     path("place_order/<str:name>/", views.place_order, name="place_order"),

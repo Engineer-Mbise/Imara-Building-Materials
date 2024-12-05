@@ -2,6 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-FX8P0KE3QP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-FX8P0KE3QP");
+    </script>
+
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -16,6 +31,14 @@
       name="keywords"
       content="ujenzi,mabati,misumari,vigae,kofia za mabati,ushauri wa kitaalam kuhusu ujenzi,nyumba,crimping,ezeka"
     />
+
+    <meta property="og:title" content="Imara Building Materials" />
+    <meta
+      property="og:description"
+      content="Wauzaji wa vifaa vya ujenzi bora Tanzania."
+    />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:type" content="website" />
     <title>Home-Imara Building Materials</title>
     <!-- Favicon-->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
