@@ -10826,7 +10826,7 @@ textarea.form-control-lg {
 }
 
 #header {
-  background-image: url("/static/img/house.jpg");
+  background-image: url("/static/img/house.62b6e07e0d95.jpg");
   background-repeat: no-repeat;
   background-size: cover;  /* Ensures image covers the container on large screens */
   height: 110vh;            /* Larger height for desktops */
