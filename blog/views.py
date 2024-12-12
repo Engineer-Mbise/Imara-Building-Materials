@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Product,Order
-from .forms import OrderForm
+from .forms import OrderForm,ProductForm
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -19,6 +19,29 @@ def mabati(request):
     bati=Product.objects.filter(category__name="Mabati")
     
     return render(request,"blog/mabati.html",{"bati":bati})
+
+
+
+
+def post_product(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("mabati") 
+    else:
+        form = ProductForm()
+
+    return render(request, "blog/mabati.html", {"form":form})
+
+
+
+
+
+
+
+
+
 
 
 
@@ -71,6 +94,14 @@ def cancel_order(request,pk):
     order_to_be_canceled=Order.objects.filter(id=pk)
     order_to_be_canceled.delete()
     return redirect('my_orders')
+
+
+
+
+def delete_product(request,product_name):
+    product_to_be_deleted=Product.objects.filter(name=product_name)
+    product_to_be_deleted.delete()
+    return redirect('mabati')
 
 
 

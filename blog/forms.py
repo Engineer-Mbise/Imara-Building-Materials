@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from phonenumber_field.modelfields import PhoneNumberField
-from .models import Order
+from .models import Order,Product
 from django import forms
 
 
@@ -15,6 +15,18 @@ class OrderForm(ModelForm):
            
             "region": forms.TextInput(attrs={"placeholder":"Arusha","class":"form-control"})
            
+        }
+
+
+class ProductForm(ModelForm):
+    model=Product
+    exclude=["category"]
+    fields=["name","price","image"]
+    
+    widgets = {
+            "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter product name"}),
+            "price": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter price"}),
+            "image": forms.ClearableFileInput(attrs={"class": "form-control"}),
         }
         
         

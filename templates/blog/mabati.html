@@ -8,6 +8,14 @@
       </h1>
     </div>
   </div>
+  <button
+    type="button"
+    class="btn btn-primary text-light float-end"
+    data-bs-toggle="modal"
+    data-bs-target="#basicModal"
+  >
+    Post Bidhaa
+  </button>
 </header>
 
 <div class="container">
@@ -30,6 +38,11 @@
           <a class="btn btn-primary" href="{%url 'place_order' product.name%}"
             >Weka Oda Yako</a
           >
+          {% if request.user.role == 'OWNER' or request.user.role == 'ADMIN' %}
+          <a class="btn btn-danger" href="{%url 'delete_product' product.name%}"
+            >Delete</a
+          >
+          {%endif%}
         </div>
       </div>
     </div>
@@ -37,4 +50,43 @@
   </div>
   <div class="row">{% endif %} {% endfor %}</div>
 </div>
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="modal fade" id="basicModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Post Bati</h5>
+        </div>
+        {% csrf_token %}
+        <div class="modal-body">
+          <!-- Name Field -->
+          <div>
+            <label for="{{name.id_for_label}}">Jina la Bati</label><br />
+            {{name}}<br />
+          </div>
+          <br /><br />
+
+          <!-- Price Field -->
+          <div>
+            <label for="{{price.id_for_label}}">Bei</label><br />
+            {{price}}<br />
+          </div>
+          <br /><br />
+
+          <!-- Image Field -->
+          <div>
+            <label for="{{image.id_for_label}}">Picha</label><br />
+            {{image}}<br />
+          </div>
+          <br /><br />
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary text-light">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
 {% endblock content %}
