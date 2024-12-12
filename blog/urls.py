@@ -24,7 +24,6 @@ urlpatterns = [
     path("delete_product/<str:product_name>/", views.delete_product, name="delete_product"),
     path("oda zako/",views.my_orders,name="my_orders"),
     path("wasifu/",views.wasifu,name="wasifu"),
-    path("new_post/",views.post_product,name="post_product"),
     path("cancel_order/<int:pk>/",views.cancel_order,name="cancel_order"),
     path("update_order_status/<int:order_id>/",views.update_order_status,name="update_order_status"),
    

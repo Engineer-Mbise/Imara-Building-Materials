@@ -57,6 +57,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Post Bati</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         {% csrf_token %}
         <div class="modal-body">
@@ -65,21 +71,18 @@
             <label for="{{name.id_for_label}}">Jina la Bati</label><br />
             {{name}}<br />
           </div>
-          <br /><br />
 
           <!-- Price Field -->
           <div>
             <label for="{{price.id_for_label}}">Bei</label><br />
             {{price}}<br />
           </div>
-          <br /><br />
 
           <!-- Image Field -->
           <div>
             <label for="{{image.id_for_label}}">Picha</label><br />
             {{image}}<br />
           </div>
-          <br /><br />
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary text-light">Post</button>

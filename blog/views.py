@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from .models import Product,Order
+from django.shortcuts import render,redirect,get_object_or_404
+from .models import Product,Order,Category
 from .forms import OrderForm,ProductForm
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
@@ -15,33 +15,26 @@ def index(request):
 
 
 def mabati(request):
-    
-    bati=Product.objects.filter(category__name="Mabati")
-    
-    return render(request,"blog/mabati.html",{"bati":bati})
-
-
-
-
-def post_product(request):
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES)
+      bati=Product.objects.filter(category__name="Mabati")
+      if request.method == "POST":
+        form = ProductForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
+            instance=form.save(commit=False)
+            mabati_category = get_object_or_404(Category, name="Mabati")
+            instance.category = mabati_category
+            instance.save()
             return redirect("mabati") 
-    else:
-        form = ProductForm()
-
-    return render(request, "blog/mabati.html", {"form":form})
-
-
-
-
-
-
-
-
-
+        
+      else: 
+           form = ProductForm()
+      return render(request,"blog/mabati.html",
+        {
+        "bati":bati,
+        "name": form["name"],   
+        "price": form["price"], 
+        "image": form["image"],
+        },
+        )
 
 
 

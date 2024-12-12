@@ -19,13 +19,15 @@ class OrderForm(ModelForm):
 
 
 class ProductForm(ModelForm):
-    model=Product
-    exclude=["category"]
-    fields=["name","price","image"]
+    class Meta:
+        
+        model = Product
+        exclude=["category"]
+        fields=["name","price","image"]
     
-    widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter product name"}),
-            "price": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter price"}),
+        widgets = {
+            "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Weka Jina La Bati"}),
+            "price": forms.TextInput(attrs={"class": "form-control", "placeholder": "Weka Bei"}),
             "image": forms.ClearableFileInput(attrs={"class": "form-control"}),
         }
         
